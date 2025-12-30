@@ -1,6 +1,9 @@
+
+// For access to chmod, fileno
+#define _POSIX_C_SOURCE 200809L
+
 #include "dataloader.h"
 
-#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>

@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include <stdbool.h>
+
+
 struct UserData {
   long long timestamp;
   char password[32];
