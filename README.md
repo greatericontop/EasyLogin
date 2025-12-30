@@ -8,6 +8,8 @@ A PAM module that lets you log in with a shorter password for a few minutes inst
 
 This probably falls in the "save 5 seconds 5-10x a day" category, so in theory I can spend up to 12-24 hours working on this.
 
+Also because learning to work with PAM is fun.
+
 ## Installation
 
 Download the repo and run `sudo make install`. This will copy `easylogin-cli` to `/usr/local/bin/` and copy `easylogin.so` to `/lib/x86_64-linux-gnu/security`. (If your system uses a different path for PAM modules, adjust the path accordingly.)
