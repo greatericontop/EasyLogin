@@ -41,7 +41,7 @@ bool load(struct UserData *output) {
   if (!fp) {
     return false;
   }
-  int count = fscanf(fp, "%lld %31s", &output->timestamp, output->password);
+  int count = fscanf(fp, DATAFILE_SCANF, &output->timestamp, output->password);
   if (count != 2) {
     fclose(fp);
     return false;

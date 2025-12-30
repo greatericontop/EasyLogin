@@ -4,9 +4,14 @@
 #include <stdbool.h>
 
 
+#define PW_ARRAY_LEN 32
+#define PW_SCANF "%31s"
+#define DATAFILE_SCANF "%lld %31s"
+
+
 struct UserData {
   long long timestamp;
-  char password[32];
+  char password[PW_ARRAY_LEN];
 };
 
 

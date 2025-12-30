@@ -16,9 +16,9 @@ int main(int argc, char *argv[]) {
 
   if (strcmp(argv[1], "set-password") == 0) {
     struct UserData data = { .timestamp = 0LL };
-    char password[32];
+    char password[PW_ARRAY_LEN];
     printf("Enter new password: ");
-    scanf("%31s", password);
+    scanf(PW_SCANF, password);
     strcpy(data.password, password);
     if (!save(data)) {
       fprintf(stderr, "Failed to save user data\n");
