@@ -1,14 +1,14 @@
 
-all: easylogin-cli
+all: easylogin.so easylogin-cli
 
 
-#library: library.c dataloader.c dataloader.h
-#	gcc -shared -o libdataloader.so -fPIC library.c dataloader.c
+easylogin.so: library.c dataloader.c dataloader.h
+	gcc -std=c17 -Wall -Werror -shared -fPIC -o easylogin.so library.c dataloader.c
 
 easylogin-cli: cli.c dataloader.c dataloader.h
 	gcc -std=c17 -Wall -Werror -o easylogin-cli cli.c dataloader.c
 
 
-install: easylogin-cli
-	#cp libdataloader.so /usr/local/lib/
+install: easylogin.so easylogin-cli
+	cp easylogin.so /usr/local/lib/
 	cp easylogin-cli /usr/local/bin/
