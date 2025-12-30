@@ -10,5 +10,5 @@ easylogin-cli: cli.c dataloader.c dataloader.h
 
 
 install: easylogin.so easylogin-cli
-	cp easylogin.so /usr/local/lib/
+	cp easylogin.so /lib/x86_64-linux-gnu/security
 	cp easylogin-cli /usr/local/bin/

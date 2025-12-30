@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
   if (argc < 2) {
     fprintf(stderr, "Usage\n");
     fprintf(stderr, "%s set-password\n", argv[0]);
-    fprintf(stderr, "%s set-timestamp\n", argv[0]);
+    fprintf(stderr, "%s set-timestamp <extra time in seconds>\n", argv[0]);
     return EXIT_FAILURE;
   }
 
@@ -29,12 +29,17 @@ int main(int argc, char *argv[]) {
   }
 
   if (strcmp(argv[1], "set-timestamp") == 0) {
+    if (argc < 3) {
+      fprintf(stderr, "Please provide extra time in seconds\n");
+      return EXIT_FAILURE;
+    }
     struct UserData data;
     if (!load(&data)) {
       fprintf(stderr, "Failed to load user data\n");
       return EXIT_FAILURE;
     }
-    data.timestamp = (long long) time(NULL);
+    long long extra_time = (long long) strtol(argv[2], NULL, 10);
+    data.timestamp = ((long long) time(NULL)) + extra_time;
     if (!save(data)) {
       fprintf(stderr, "Failed to save user data\n");
       return EXIT_FAILURE;

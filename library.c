@@ -23,7 +23,7 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, cons
     return PAM_AUTH_ERR;
   }
 
-  struct pam_message msg = { .msg_style = PAM_PROMPT_ECHO_OFF, .msg = "Password: " };
+  struct pam_message msg = { .msg_style = PAM_PROMPT_ECHO_OFF, .msg = "EasyLogin Code: " };
   struct pam_message *msg_ptr = &msg;
   struct pam_response *resp_ptr;
   int ret1 = conv->conv(1, (const struct pam_message **)&msg_ptr, &resp_ptr, conv->appdata_ptr);
