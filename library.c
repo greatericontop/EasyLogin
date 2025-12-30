@@ -32,6 +32,17 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc, cons
     return PAM_AUTH_ERR;
   }
 
+  // Immediately lock timestamp once a non-empty attempt is entered
+  if (strlen(resp_ptr->resp) != 0) {
+    data.timestamp = 0LL;
+    if (!save(data)) {
+      memset(data.password, 0, strlen(data.password));
+      memset(resp_ptr->resp, 0, strlen(resp_ptr->resp));
+      free(resp_ptr->resp);
+      free(resp_ptr);
+      return PAM_AUTH_ERR;
+    }
+  }
   // Don't really care about hashing or comparison timing
   int ret2;
   if (strcmp(resp_ptr->resp, data.password) == 0) {
